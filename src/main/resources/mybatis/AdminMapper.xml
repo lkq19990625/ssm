@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.AdminMapper">
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Admin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="aname" jdbcType="VARCHAR" property="aname" />
+    <result column="apwd" jdbcType="VARCHAR" property="apwd" />
+    <result column="acname" jdbcType="VARCHAR" property="acname" />
+    <result column="atel" jdbcType="VARCHAR" property="atel" />
+    <result column="aemail" jdbcType="VARCHAR" property="aemail" />
+    <result column="by001" jdbcType="VARCHAR" property="by001" />
+    <result column="by002" jdbcType="VARCHAR" property="by002" />
+    <result column="by003" jdbcType="INTEGER" property="by003" />
+    <result column="by004" jdbcType="TIMESTAMP" property="by004" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="createuser" jdbcType="VARCHAR" property="createuser" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="updateuser" jdbcType="VARCHAR" property="updateuser" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.lanqiao.entity.Admin">
+    <result column="aimg" jdbcType="LONGVARBINARY" property="aimg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, aname, apwd, acname, atel, aemail, by001, by002, by003, by004, createtime, createuser, 
+    updatetime, updateuser
+  </sql>
+  <sql id="Blob_Column_List">
+    aimg
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tc_admin
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tc_admin
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Admin">
+    insert into tc_admin (id, aname, apwd, 
+      acname, atel, aemail, 
+      by001, by002, by003, 
+      by004, createtime, createuser, 
+      updatetime, updateuser, aimg
+      )
+    values (#{id,jdbcType=INTEGER}, #{aname,jdbcType=VARCHAR}, #{apwd,jdbcType=VARCHAR}, 
+      #{acname,jdbcType=VARCHAR}, #{atel,jdbcType=VARCHAR}, #{aemail,jdbcType=VARCHAR}, 
+      #{by001,jdbcType=VARCHAR}, #{by002,jdbcType=VARCHAR}, #{by003,jdbcType=INTEGER}, 
+      #{by004,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, #{createuser,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{updateuser,jdbcType=VARCHAR}, #{aimg,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Admin">
+    insert into tc_admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="aname != null">
+        aname,
+      </if>
+      <if test="apwd != null">
+        apwd,
+      </if>
+      <if test="acname != null">
+        acname,
+      </if>
+      <if test="atel != null">
+        atel,
+      </if>
+      <if test="aemail != null">
+        aemail,
+      </if>
+      <if test="by001 != null">
+        by001,
+      </if>
+      <if test="by002 != null">
+        by002,
+      </if>
+      <if test="by003 != null">
+        by003,
+      </if>
+      <if test="by004 != null">
+        by004,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="createuser != null">
+        createuser,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="updateuser != null">
+        updateuser,
+      </if>
+      <if test="aimg != null">
+        aimg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="aname != null">
+        #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="apwd != null">
+        #{apwd,jdbcType=VARCHAR},
+      </if>
+      <if test="acname != null">
+        #{acname,jdbcType=VARCHAR},
+      </if>
+      <if test="atel != null">
+        #{atel,jdbcType=VARCHAR},
+      </if>
+      <if test="aemail != null">
+        #{aemail,jdbcType=VARCHAR},
+      </if>
+      <if test="by001 != null">
+        #{by001,jdbcType=VARCHAR},
+      </if>
+      <if test="by002 != null">
+        #{by002,jdbcType=VARCHAR},
+      </if>
+      <if test="by003 != null">
+        #{by003,jdbcType=INTEGER},
+      </if>
+      <if test="by004 != null">
+        #{by004,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuser != null">
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="aimg != null">
+        #{aimg,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Admin">
+    update tc_admin
+    <set>
+      <if test="aname != null">
+        aname = #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="apwd != null">
+        apwd = #{apwd,jdbcType=VARCHAR},
+      </if>
+      <if test="acname != null">
+        acname = #{acname,jdbcType=VARCHAR},
+      </if>
+      <if test="atel != null">
+        atel = #{atel,jdbcType=VARCHAR},
+      </if>
+      <if test="aemail != null">
+        aemail = #{aemail,jdbcType=VARCHAR},
+      </if>
+      <if test="by001 != null">
+        by001 = #{by001,jdbcType=VARCHAR},
+      </if>
+      <if test="by002 != null">
+        by002 = #{by002,jdbcType=VARCHAR},
+      </if>
+      <if test="by003 != null">
+        by003 = #{by003,jdbcType=INTEGER},
+      </if>
+      <if test="by004 != null">
+        by004 = #{by004,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null">
+        createuser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuser != null">
+        updateuser = #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="aimg != null">
+        aimg = #{aimg,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.lanqiao.entity.Admin">
+    update tc_admin
+    set aname = #{aname,jdbcType=VARCHAR},
+      apwd = #{apwd,jdbcType=VARCHAR},
+      acname = #{acname,jdbcType=VARCHAR},
+      atel = #{atel,jdbcType=VARCHAR},
+      aemail = #{aemail,jdbcType=VARCHAR},
+      by001 = #{by001,jdbcType=VARCHAR},
+      by002 = #{by002,jdbcType=VARCHAR},
+      by003 = #{by003,jdbcType=INTEGER},
+      by004 = #{by004,jdbcType=TIMESTAMP},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      createuser = #{createuser,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      updateuser = #{updateuser,jdbcType=VARCHAR},
+      aimg = #{aimg,jdbcType=LONGVARBINARY}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Admin">
+    update tc_admin
+    set aname = #{aname,jdbcType=VARCHAR},
+      apwd = #{apwd,jdbcType=VARCHAR},
+      acname = #{acname,jdbcType=VARCHAR},
+      atel = #{atel,jdbcType=VARCHAR},
+      aemail = #{aemail,jdbcType=VARCHAR},
+      by001 = #{by001,jdbcType=VARCHAR},
+      by002 = #{by002,jdbcType=VARCHAR},
+      by003 = #{by003,jdbcType=INTEGER},
+      by004 = #{by004,jdbcType=TIMESTAMP},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      createuser = #{createuser,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      updateuser = #{updateuser,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Admin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="aname" jdbcType="VARCHAR" property="aname" />
+    <result column="apwd" jdbcType="VARCHAR" property="apwd" />
+    <result column="acname" jdbcType="VARCHAR" property="acname" />
+    <result column="atel" jdbcType="VARCHAR" property="atel" />
+    <result column="aemail" jdbcType="VARCHAR" property="aemail" />
+    <result column="by001" jdbcType="VARCHAR" property="by001" />
+    <result column="by002" jdbcType="VARCHAR" property="by002" />
+    <result column="by003" jdbcType="INTEGER" property="by003" />
+    <result column="by004" jdbcType="TIMESTAMP" property="by004" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="createuser" jdbcType="VARCHAR" property="createuser" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="updateuser" jdbcType="VARCHAR" property="updateuser" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.lanqiao.entity.Admin">
+    <result column="aimg" jdbcType="LONGVARBINARY" property="aimg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, aname, apwd, acname, atel, aemail, by001, by002, by003, by004, createtime, createuser, 
+    updatetime, updateuser
+  </sql>
+  <sql id="Blob_Column_List">
+    aimg
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tc_admin
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tc_admin
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Admin">
+    insert into tc_admin (id, aname, apwd, 
+      acname, atel, aemail, 
+      by001, by002, by003, 
+      by004, createtime, createuser, 
+      updatetime, updateuser, aimg
+      )
+    values (#{id,jdbcType=INTEGER}, #{aname,jdbcType=VARCHAR}, #{apwd,jdbcType=VARCHAR}, 
+      #{acname,jdbcType=VARCHAR}, #{atel,jdbcType=VARCHAR}, #{aemail,jdbcType=VARCHAR}, 
+      #{by001,jdbcType=VARCHAR}, #{by002,jdbcType=VARCHAR}, #{by003,jdbcType=INTEGER}, 
+      #{by004,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, #{createuser,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{updateuser,jdbcType=VARCHAR}, #{aimg,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Admin">
+    insert into tc_admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="aname != null">
+        aname,
+      </if>
+      <if test="apwd != null">
+        apwd,
+      </if>
+      <if test="acname != null">
+        acname,
+      </if>
+      <if test="atel != null">
+        atel,
+      </if>
+      <if test="aemail != null">
+        aemail,
+      </if>
+      <if test="by001 != null">
+        by001,
+      </if>
+      <if test="by002 != null">
+        by002,
+      </if>
+      <if test="by003 != null">
+        by003,
+      </if>
+      <if test="by004 != null">
+        by004,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="createuser != null">
+        createuser,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="updateuser != null">
+        updateuser,
+      </if>
+      <if test="aimg != null">
+        aimg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="aname != null">
+        #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="apwd != null">
+        #{apwd,jdbcType=VARCHAR},
+      </if>
+      <if test="acname != null">
+        #{acname,jdbcType=VARCHAR},
+      </if>
+      <if test="atel != null">
+        #{atel,jdbcType=VARCHAR},
+      </if>
+      <if test="aemail != null">
+        #{aemail,jdbcType=VARCHAR},
+      </if>
+      <if test="by001 != null">
+        #{by001,jdbcType=VARCHAR},
+      </if>
+      <if test="by002 != null">
+        #{by002,jdbcType=VARCHAR},
+      </if>
+      <if test="by003 != null">
+        #{by003,jdbcType=INTEGER},
+      </if>
+      <if test="by004 != null">
+        #{by004,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuser != null">
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="aimg != null">
+        #{aimg,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Admin">
+    update tc_admin
+    <set>
+      <if test="aname != null">
+        aname = #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="apwd != null">
+        apwd = #{apwd,jdbcType=VARCHAR},
+      </if>
+      <if test="acname != null">
+        acname = #{acname,jdbcType=VARCHAR},
+      </if>
+      <if test="atel != null">
+        atel = #{atel,jdbcType=VARCHAR},
+      </if>
+      <if test="aemail != null">
+        aemail = #{aemail,jdbcType=VARCHAR},
+      </if>
+      <if test="by001 != null">
+        by001 = #{by001,jdbcType=VARCHAR},
+      </if>
+      <if test="by002 != null">
+        by002 = #{by002,jdbcType=VARCHAR},
+      </if>
+      <if test="by003 != null">
+        by003 = #{by003,jdbcType=INTEGER},
+      </if>
+      <if test="by004 != null">
+        by004 = #{by004,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null">
+        createuser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuser != null">
+        updateuser = #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="aimg != null">
+        aimg = #{aimg,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.lanqiao.entity.Admin">
+    update tc_admin
+    set aname = #{aname,jdbcType=VARCHAR},
+      apwd = #{apwd,jdbcType=VARCHAR},
+      acname = #{acname,jdbcType=VARCHAR},
+      atel = #{atel,jdbcType=VARCHAR},
+      aemail = #{aemail,jdbcType=VARCHAR},
+      by001 = #{by001,jdbcType=VARCHAR},
+      by002 = #{by002,jdbcType=VARCHAR},
+      by003 = #{by003,jdbcType=INTEGER},
+      by004 = #{by004,jdbcType=TIMESTAMP},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      createuser = #{createuser,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      updateuser = #{updateuser,jdbcType=VARCHAR},
+      aimg = #{aimg,jdbcType=LONGVARBINARY}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Admin">
+    update tc_admin
+    set aname = #{aname,jdbcType=VARCHAR},
+      apwd = #{apwd,jdbcType=VARCHAR},
+      acname = #{acname,jdbcType=VARCHAR},
+      atel = #{atel,jdbcType=VARCHAR},
+      aemail = #{aemail,jdbcType=VARCHAR},
+      by001 = #{by001,jdbcType=VARCHAR},
+      by002 = #{by002,jdbcType=VARCHAR},
+      by003 = #{by003,jdbcType=INTEGER},
+      by004 = #{by004,jdbcType=TIMESTAMP},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      createuser = #{createuser,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      updateuser = #{updateuser,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="org.lanqiao.entity.Admin">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="aname" jdbcType="VARCHAR" property="aname" />
+    <result column="apwd" jdbcType="VARCHAR" property="apwd" />
+    <result column="acname" jdbcType="VARCHAR" property="acname" />
+    <result column="atel" jdbcType="VARCHAR" property="atel" />
+    <result column="aemail" jdbcType="VARCHAR" property="aemail" />
+    <result column="by001" jdbcType="VARCHAR" property="by001" />
+    <result column="by002" jdbcType="VARCHAR" property="by002" />
+    <result column="by003" jdbcType="INTEGER" property="by003" />
+    <result column="by004" jdbcType="TIMESTAMP" property="by004" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="createuser" jdbcType="VARCHAR" property="createuser" />
+    <result column="updatetime" jdbcType="TIMESTAMP" property="updatetime" />
+    <result column="updateuser" jdbcType="VARCHAR" property="updateuser" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="org.lanqiao.entity.Admin">
+    <result column="aimg" jdbcType="LONGVARBINARY" property="aimg" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, aname, apwd, acname, atel, aemail, by001, by002, by003, by004, createtime, createuser, 
+    updatetime, updateuser
+  </sql>
+  <sql id="Blob_Column_List">
+    aimg
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tc_admin
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from tc_admin
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="org.lanqiao.entity.Admin">
+    insert into tc_admin (id, aname, apwd, 
+      acname, atel, aemail, 
+      by001, by002, by003, 
+      by004, createtime, createuser, 
+      updatetime, updateuser, aimg
+      )
+    values (#{id,jdbcType=INTEGER}, #{aname,jdbcType=VARCHAR}, #{apwd,jdbcType=VARCHAR}, 
+      #{acname,jdbcType=VARCHAR}, #{atel,jdbcType=VARCHAR}, #{aemail,jdbcType=VARCHAR}, 
+      #{by001,jdbcType=VARCHAR}, #{by002,jdbcType=VARCHAR}, #{by003,jdbcType=INTEGER}, 
+      #{by004,jdbcType=TIMESTAMP}, #{createtime,jdbcType=TIMESTAMP}, #{createuser,jdbcType=VARCHAR}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{updateuser,jdbcType=VARCHAR}, #{aimg,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="org.lanqiao.entity.Admin">
+    insert into tc_admin
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="aname != null">
+        aname,
+      </if>
+      <if test="apwd != null">
+        apwd,
+      </if>
+      <if test="acname != null">
+        acname,
+      </if>
+      <if test="atel != null">
+        atel,
+      </if>
+      <if test="aemail != null">
+        aemail,
+      </if>
+      <if test="by001 != null">
+        by001,
+      </if>
+      <if test="by002 != null">
+        by002,
+      </if>
+      <if test="by003 != null">
+        by003,
+      </if>
+      <if test="by004 != null">
+        by004,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="createuser != null">
+        createuser,
+      </if>
+      <if test="updatetime != null">
+        updatetime,
+      </if>
+      <if test="updateuser != null">
+        updateuser,
+      </if>
+      <if test="aimg != null">
+        aimg,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="aname != null">
+        #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="apwd != null">
+        #{apwd,jdbcType=VARCHAR},
+      </if>
+      <if test="acname != null">
+        #{acname,jdbcType=VARCHAR},
+      </if>
+      <if test="atel != null">
+        #{atel,jdbcType=VARCHAR},
+      </if>
+      <if test="aemail != null">
+        #{aemail,jdbcType=VARCHAR},
+      </if>
+      <if test="by001 != null">
+        #{by001,jdbcType=VARCHAR},
+      </if>
+      <if test="by002 != null">
+        #{by002,jdbcType=VARCHAR},
+      </if>
+      <if test="by003 != null">
+        #{by003,jdbcType=INTEGER},
+      </if>
+      <if test="by004 != null">
+        #{by004,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null">
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuser != null">
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="aimg != null">
+        #{aimg,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="org.lanqiao.entity.Admin">
+    update tc_admin
+    <set>
+      <if test="aname != null">
+        aname = #{aname,jdbcType=VARCHAR},
+      </if>
+      <if test="apwd != null">
+        apwd = #{apwd,jdbcType=VARCHAR},
+      </if>
+      <if test="acname != null">
+        acname = #{acname,jdbcType=VARCHAR},
+      </if>
+      <if test="atel != null">
+        atel = #{atel,jdbcType=VARCHAR},
+      </if>
+      <if test="aemail != null">
+        aemail = #{aemail,jdbcType=VARCHAR},
+      </if>
+      <if test="by001 != null">
+        by001 = #{by001,jdbcType=VARCHAR},
+      </if>
+      <if test="by002 != null">
+        by002 = #{by002,jdbcType=VARCHAR},
+      </if>
+      <if test="by003 != null">
+        by003 = #{by003,jdbcType=INTEGER},
+      </if>
+      <if test="by004 != null">
+        by004 = #{by004,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null">
+        createuser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null">
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateuser != null">
+        updateuser = #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="aimg != null">
+        aimg = #{aimg,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="org.lanqiao.entity.Admin">
+    update tc_admin
+    set aname = #{aname,jdbcType=VARCHAR},
+      apwd = #{apwd,jdbcType=VARCHAR},
+      acname = #{acname,jdbcType=VARCHAR},
+      atel = #{atel,jdbcType=VARCHAR},
+      aemail = #{aemail,jdbcType=VARCHAR},
+      by001 = #{by001,jdbcType=VARCHAR},
+      by002 = #{by002,jdbcType=VARCHAR},
+      by003 = #{by003,jdbcType=INTEGER},
+      by004 = #{by004,jdbcType=TIMESTAMP},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      createuser = #{createuser,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      updateuser = #{updateuser,jdbcType=VARCHAR},
+      aimg = #{aimg,jdbcType=LONGVARBINARY}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="org.lanqiao.entity.Admin">
+    update tc_admin
+    set aname = #{aname,jdbcType=VARCHAR},
+      apwd = #{apwd,jdbcType=VARCHAR},
+      acname = #{acname,jdbcType=VARCHAR},
+      atel = #{atel,jdbcType=VARCHAR},
+      aemail = #{aemail,jdbcType=VARCHAR},
+      by001 = #{by001,jdbcType=VARCHAR},
+      by002 = #{by002,jdbcType=VARCHAR},
+      by003 = #{by003,jdbcType=INTEGER},
+      by004 = #{by004,jdbcType=TIMESTAMP},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      createuser = #{createuser,jdbcType=VARCHAR},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      updateuser = #{updateuser,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

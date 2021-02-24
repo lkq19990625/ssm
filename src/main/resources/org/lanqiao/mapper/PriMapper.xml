@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.PriMapper">
+    <select id="selectPidByAid" resultType="Permissions">
+        SELECT * FROM tc_priv
+                WHERE pid in(SELECT pid FROM tc_role_priv
+                WHERE rid in(SELECT rid FROM tc_admin_role WHERE aid=#{aid})) and state=1
+    </select>
+    <select id="selectNameByRid" resultType="Permissions">
+        SELECT * FROM tc_priv WHERE pid in(SELECT pid FROM tc_role_priv WHERE rid =#{rid} )and state=1
+    </select>
+    <select id="selectAllPriv" resultType="Permissions">
+        SELECT * FROM tc_priv
+    </select>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.AdminMapper">
+    <select id="selectAdminByAcnameAndAPwd" resultType="Admin">
+        select * from tc_admin where acname=#{acname} and apwd=#{apwd}
+    </select>
+    <update id="updateAdminInformation" parameterType="Admin">
+        update tc_admin set aname=#{aname},atel=#{atel},aemail=#{aemail} where id=#{id}
+    </update>
+    <update id="updateAdminApwdByAcname" parameterType="Admin">
+        update tc_admin set apwd=#{apwd} where acname=#{acname}
+    </update>
+</mapper>

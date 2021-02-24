@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.RoleMapper">
+    <select id="selectRolesByAid" resultType="Role">
+        SELECT * FROM tc_role
+        WHERE id in(SELECT rid FROM tc_admin_role
+        WHERE aid = #{aid})
+    </select>
+    <select id="selectAllRoles" resultType="Role">
+        SELECT * FROM tc_role
+    </select>
+    <insert id="insertRole" parameterType="Role">
+        insert into tc_role(rname,by001,by002,by003,by004,createuser,createtime,updateuser,updatetime) values(#{rname},null,null,null,null,#{createUser},#{createTime},null,null)
+    </insert>
+    <select id="selectRoleByRname" resultType="Role">
+        select * from tc_role where rname=#{rname}
+    </select>
+    <update id="updateRnameByRid" parameterType="Role">
+        update tc_role set rname=#{rname} where id=#{id}
+    </update>
+    <delete id="deleteRolePriv" parameterType="Role">
+        delete from tc_role_priv where rid=#{id}
+    </delete>
+    <insert id="insertRolePriv" parameterType="Role">
+        insert into tc_role_priv values
+        <foreach collection="lp" item="priv" separator="," >
+            (null,#{id},#{priv.pid},#{createUser},#{createTime},null,null)
+        </foreach>
+    </insert>
+    <select id="selectAidByRid" resultType="Admin">
+        select aid from tc_admin_role where rid=#{id}
+    </select>
+    <delete id="deleteRole" parameterType="Role">
+        delete from tc_role where id=#{id}
+    </delete>
+</mapper>
