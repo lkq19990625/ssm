@@ -32,22 +32,22 @@
                 </tr>
                 <c:forEach items="${fr}" var="fee">
                     <tr>
-                        <td>${fee.id}</td>
+                        <td>${fee.fid}</td>
                         <td>${fee.fname}</td>
-                        <td>${fee.ftime}</td>
-                        <td>${fee.fcout}</td>
-                        <td>${fee.fcounts}</td>
-                        <td>${fee.createtime}</td>
-                        <td>${fee.updatetime}</td>
-                        <c:if test="${fee.state==1}">
+                        <td>${fee.base_time}</td>
+                        <td>${fee.base_fee}</td>
+                        <td>${fee.unit_fee}</td>
+                        <td>${fee.create_time}</td>
+                        <td>${fee.starttime}</td>
+                        <c:if test="${fee.status==1}">
                             <td>暂停</td>
                             <td>
                                 <input type="button" value="启用" class="btn_start" onclick="startFee();" />
                                 <input type="button" value="修改" class="btn_modify" onclick="location.href='fee_modi.jsp';" />
-                                <input type="button" value="删除" class="btn_delete" onclick="deleteFee();" />
+                                <input type="button" value="删除" class="btn_delete" onclick="deleteFee('${fee.fname}');" />
                             </td>
                         </c:if>
-                        <c:if test="${fee.state==0}">
+                        <c:if test="${fee.status==0}">
                             <td>开通</td>
                         </c:if>
                     </tr>
@@ -91,10 +91,11 @@
         document.getElementById("operate_result_info").style.display = "block";
     }
     //删除
-    function deleteFee() {
+    function deleteFee(fname) {
         var r = window.confirm("确定要删除此资费吗？");
+        if(r){
+            location.href="/fee/deleteFee.do?fname="+fname;
+        }
         document.getElementById("operate_result_info").style.display = "block";
     }
 </script>
-</body>
-</html>

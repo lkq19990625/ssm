@@ -1,82 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title></title>
-        <link type="text/css" rel="stylesheet" media="all" href="${pageContext.request.contextPath}/css/global.css" />
-        <link type="text/css" rel="stylesheet" media="all" href="${pageContext.request.contextPath}/css/global_color.css" />
-        <script language="javascript" type="text/javascript">
-            //保存结果的提示
-            function showResult() {
-                showResultDiv(true);
-                window.setTimeout("showResultDiv(false);", 3000);
-            }
-            function showResultDiv(flag) {
-                var divResult = document.getElementById("save_result_info");
-                if (flag)
-                    divResult.style.display = "block";
-                else
-                    divResult.style.display = "none";
-            }
-
-            //切换资费类型
-            function feeTypeChange(type) {
-                var inputArray = document.getElementById("main").getElementsByTagName("input");
-                if (type == 1) {
-                    inputArray[5].readonly = true;
-                    inputArray[5].value = "";
-                    inputArray[5].className += " readonly";
-                    inputArray[6].readonly = false;
-                    inputArray[6].className = "width100";
-                    inputArray[7].readonly = true;
-                    inputArray[7].className += " readonly";
-                    inputArray[7].value = "";
-                }
-                else if (type == 2) {
-                    inputArray[5].readonly = false;
-                    inputArray[5].className = "width100";
-                    inputArray[6].readonly = false;
-                    inputArray[6].className = "width100";
-                    inputArray[7].readonly = false;
-                    inputArray[7].className = "width100";
-                }
-                else if (type == 3) {
-                    inputArray[5].readonly = true;
-                    inputArray[5].value = "";
-                    inputArray[5].className += " readonly";
-                    inputArray[6].readonly = true;
-                    inputArray[6].value = "";
-                    inputArray[6].className += " readonly";
-                    inputArray[7].readonly = false;
-                    inputArray[7].className = "width100";
-                }
-            }
-        </script>
-    </head>
-    <body>
-        <!--Logo区域开始-->
-        <div id="header">
-            <img src="${pageContext.request.contextPath}/images/logo.png" alt="logo" class="left"/>
-            <a href="#">[退出]</a>            
-        </div>
-        <!--Logo区域结束-->
-        <!--导航区域开始-->
-        <div id="navi">
-            <ul id="menu">
-                <li><a href="../index.jsp" class="index_off"></a></li>
-                <li><a href="../role/role_list.jsp" class="role_off"></a></li>
-                <li><a href="../admin/admin_list.jsp" class="admin_off"></a></li>
-                <li><a href="fee_list.jsp" class="fee_on"></a></li>
-                <li><a href="../account/account_list.jsp" class="account_off"></a></li>
-                <li><a href="../service/service_list.jsp" class="service_off"></a></li>
-                <li><a href="../bill/bill_list.jsp" class="bill_off"></a></li>
-                <li><a href="../report/report_list.jsp" class="report_off"></a></li>
-                <li><a href="../user/user_info.jsp" class="information_off"></a></li>
-                <li><a href="../user/user_modi_pwd.jsp" class="password_off"></a></li>
-            </ul>
-        </div>
-        <!--导航区域结束-->
-        <!--主要区域开始-->
+﻿<%@ include file="../include/header.jsp" %>
         <div id="main">            
             <div id="save_result_info" class="save_success">保存成功！</div>
             <form action="" method="" class="main_form">
@@ -135,4 +57,51 @@
             
         </div>
     </body>
+    <script language="javascript" type="text/javascript">
+        //保存结果的提示
+        function showResult() {
+            showResultDiv(true);
+            window.setTimeout("showResultDiv(false);", 3000);
+        }
+        function showResultDiv(flag) {
+            var divResult = document.getElementById("save_result_info");
+            if (flag)
+                divResult.style.display = "block";
+            else
+                divResult.style.display = "none";
+        }
+
+        //切换资费类型
+        function feeTypeChange(type) {
+            var inputArray = document.getElementById("main").getElementsByTagName("input");
+            if (type == 1) {
+                inputArray[5].readonly = true;
+                inputArray[5].value = "";
+                inputArray[5].className += " readonly";
+                inputArray[6].readonly = false;
+                inputArray[6].className = "width100";
+                inputArray[7].readonly = true;
+                inputArray[7].className += " readonly";
+                inputArray[7].value = "";
+            }
+            else if (type == 2) {
+                inputArray[5].readonly = false;
+                inputArray[5].className = "width100";
+                inputArray[6].readonly = false;
+                inputArray[6].className = "width100";
+                inputArray[7].readonly = false;
+                inputArray[7].className = "width100";
+            }
+            else if (type == 3) {
+                inputArray[5].readonly = true;
+                inputArray[5].value = "";
+                inputArray[5].className += " readonly";
+                inputArray[6].readonly = true;
+                inputArray[6].value = "";
+                inputArray[6].className += " readonly";
+                inputArray[7].readonly = false;
+                inputArray[7].className = "width100";
+            }
+        }
+    </script>
 </html>

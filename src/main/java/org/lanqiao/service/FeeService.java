@@ -14,4 +14,6 @@ public interface FeeService {
     List<Fee> getAllFee();
     // 添加资费类型
     boolean insertFee(Fee fee);
+
+    boolean deleteFee(Fee fee);
 }

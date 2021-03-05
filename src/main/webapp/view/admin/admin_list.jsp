@@ -1,65 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title></title>
-        <link type="text/css" rel="stylesheet" media="all" href="${pageContext.request.contextPath}/css/global.css" />
-        <link type="text/css" rel="stylesheet" media="all" href="${pageContext.request.contextPath}/css/global_color.css" />
-        <script language="javascript" type="text/javascript">
-            //显示角色详细信息
-            function showDetail(flag, a) {
-                var detailDiv = a.parentNode.getElementsByTagName("div")[0];
-                if (flag) {
-                    detailDiv.style.display = "block";
-                }
-                else
-                    detailDiv.style.display = "none";
-            }
-            //重置密码
-            function resetPwd() {
-                alert("请至少选择一条数据！");
-                //document.getElementById("operate_result_info").style.display = "block";
-            }
-            //删除
-            function deleteAdmin() {
-                var r = window.confirm("确定要删除此管理员吗？");
-                document.getElementById("operate_result_info").style.display = "block";
-            }
-            //全选
-            function selectAdmins(inputObj) {
-                var inputArray = document.getElementById("datalist").getElementsByTagName("input");
-                for (var i = 1; i &lt; inputArray.length; i++) {
-                    if (inputArray[i].type == "checkbox") {
-                        inputArray[i].checked = inputObj.checked;
-                    }
-                }
-            }
-        </script>       
-    </head>
-    <body>
-        <!--Logo区域开始-->
-        <div id="header">
-            <img src="${pageContext.request.contextPath}/images/logo.png" alt="logo" class="left"/>
-            <a href="#">[退出]</a>            
-        </div>
-        <!--Logo区域结束-->
-        <!--导航区域开始-->
-        <div id="navi">                        
-            <ul id="menu">
-                <li><a href="../index.jsp" class="index_off"></a></li>
-                <li><a href="../role/role_list.jsp" class="role_off"></a></li>
-                <li><a href="../admin/admin_list.jsp" class="admin_on"></a></li>
-                <li><a href="../fee/fee_list.jsp" class="fee_off"></a></li>
-                <li><a href="../account/account_list.jsp" class="account_off"></a></li>
-                <li><a href="../service/service_list.jsp" class="service_off"></a></li>
-                <li><a href="../bill/bill_list.jsp" class="bill_off"></a></li>
-                <li><a href="../report/report_list.jsp" class="report_off"></a></li>
-                <li><a href="../user/user_info.jsp" class="information_off"></a></li>
-                <li><a href="../user/user_modi_pwd.jsp" class="password_off"></a></li>
-            </ul>            
-        </div>
-        <!--导航区域结束-->
-        <!--主要区域开始-->
+﻿<%@ include file="../include/header.jsp" %>
         <div id="main">
             <form action="" method="">
                 <!--查询-->
@@ -287,4 +226,34 @@
           
         </div>
     </body>
+    <script language="javascript" type="text/javascript">
+        //显示角色详细信息
+        function showDetail(flag, a) {
+            var detailDiv = a.parentNode.getElementsByTagName("div")[0];
+            if (flag) {
+                detailDiv.style.display = "block";
+            }
+            else
+                detailDiv.style.display = "none";
+        }
+        //重置密码
+        function resetPwd() {
+            alert("请至少选择一条数据！");
+            //document.getElementById("operate_result_info").style.display = "block";
+        }
+        //删除
+        function deleteAdmin() {
+            var r = window.confirm("确定要删除此管理员吗？");
+            document.getElementById("operate_result_info").style.display = "block";
+        }
+        //全选
+        function selectAdmins(inputObj) {
+            var inputArray = document.getElementById("datalist").getElementsByTagName("input");
+            for (var i = 1; i &lt; inputArray.length; i++) {
+                if (inputArray[i].type == "checkbox") {
+                    inputArray[i].checked = inputObj.checked;
+                }
+            }
+        }
+    </script>
 </html>

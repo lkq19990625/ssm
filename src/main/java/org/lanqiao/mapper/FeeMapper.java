@@ -15,4 +15,6 @@ public interface FeeMapper {
     List<Fee> selectAllFees();
     // 添加资费
     int insertFee(Fee fee);
+
+    int deleteFee(Fee fee);
 }

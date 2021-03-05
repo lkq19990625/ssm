@@ -26,4 +26,10 @@ public class FeeServiceImpl implements FeeService {
         int j = feeMapper.insertFee(fee);
         return j>0;
     }
+
+    @Override
+    public boolean deleteFee(Fee fee) {
+        int i = feeMapper.deleteFee(fee);
+        return i>0;
+    }
 }

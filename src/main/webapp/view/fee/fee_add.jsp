@@ -20,28 +20,28 @@
         </div>
         <div class="text_info clearfix"><span>基本时长：</span></div>
         <div class="input_info">
-            <input type="text" value=""  name="ftime" class="width100" />
+            <input type="text" value=""  name="base_time" class="width100" />
             <span class="info">小时</span>
             <span class="required">*</span>
             <div class="validate_msg_long">1-600之间的整数</div>
         </div>
         <div class="text_info clearfix"><span>基本费用：</span></div>
         <div class="input_info">
-            <input type="text" value=""  name="fcout" class="width100" />
+            <input type="text" value=""  name="base_fee" class="width100" />
             <span class="info">元</span>
             <span class="required">*</span>
             <div class="validate_msg_long error_msg">0-99999.99之间的数值</div>
         </div>
         <div class="text_info clearfix"><span>单位费用：</span></div>
         <div class="input_info">
-            <input type="text" value=""  name="fcounts" class="width100" />
+            <input type="text" value=""  name="unit_fee" class="width100" />
             <span class="info">元/小时</span>
             <span class="required">*</span>
             <div class="validate_msg_long error_msg">0-99999.99之间的数值</div>
         </div>
         <div class="text_info clearfix"><span>资费说明：</span></div>
         <div class="input_info_high">
-            <textarea class="width300 height70" name="by001"></textarea>
+            <textarea class="width300 height70" name="descr"></textarea>
             <div class="validate_msg_short error_msg">100长度的字母、数字、汉字和下划线的组合</div>
         </div>
         <div class="button_info clearfix">
@@ -107,5 +107,4 @@
         }
     }
 </script>
-</body>
-</html>
+
