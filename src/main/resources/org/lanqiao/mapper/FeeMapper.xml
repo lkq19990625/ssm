@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.lanqiao.mapper.FeeMapper">
+    <insert id="insertFee" parameterType="Fee">
+        insert into tc_fee(fname,base_time,base_fee,unit_fee,descr)
+        values (#{fname},#{ftime},#{fcout},#{fcounts},#{by001})
+    </insert>
+    <select id="selectAllFees" resultType="Fee">
+        select * from tc_fee
+    </select>
+
+</mapper>
