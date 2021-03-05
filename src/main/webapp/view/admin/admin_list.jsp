@@ -28,7 +28,7 @@
             //全选
             function selectAdmins(inputObj) {
                 var inputArray = document.getElementById("datalist").getElementsByTagName("input");
-                for (var i = 1; i < inputArray.length; i++) {
+                for (var i = 1; i &lt; inputArray.length; i++) {
                     if (inputArray[i].type == "checkbox") {
                         inputArray[i].checked = inputObj.checked;
                     }
